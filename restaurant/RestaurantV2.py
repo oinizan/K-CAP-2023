@@ -77,7 +77,7 @@ class RestaurantV2GD(unittest.TestCase):
         genuine_ide = []
         weak_ide = []
         for l in ide:
-            if l[2] >= filter_ide:
+            if l[2] > filter_ide:
                 genuine_ide.append(l)
             else:
                 weak_ide.append(l)
@@ -105,7 +105,7 @@ class RestaurantV2GD(unittest.TestCase):
         weak_diff = []
 
         for l in dif:
-            if l[2] >= filter_dif:
+            if l[2] > filter_dif:
                 genuine_diff.append(l)
             else:
                 weak_diff.append(l)
@@ -151,14 +151,14 @@ class RestaurantV2GD(unittest.TestCase):
                 if l[3] > 0:
                     epsilon = contexts[1][0]
                     ide = self._compute_identity(len(epsilon),max_epsilon_size) 
-                    if ide >= filter_ide:
+                    if ide > filter_ide:
                         genuine_ide.append(l)
                     else:
                         weak_ide.append(l)
                 elif l[3] < 0:
                     delta = contexts[1][1]
                     dif = self._compute_difference(len(delta),max_delta_size)
-                    if dif >= filter_dif:
+                    if dif > filter_dif:
                         genuine_dif.append(l)
                     else:
                         weak_dif.append(l)

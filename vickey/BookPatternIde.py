@@ -11,7 +11,7 @@ class BookPatternIde(unittest.TestCase):
         p = p_all_context["P5"]
 
         max_epsilon_size,max_delta_size,max_omega_size = compute_subc_max_size(p)
-
+        print (max_epsilon_size)
         k=3
         assert(k < max_epsilon_size)
 
@@ -21,7 +21,7 @@ class BookPatternIde(unittest.TestCase):
         genuine_ide = []
         artificial_ide = []
         for l in ide:
-            if l[2] >= filter_ide:
+            if l[2] > filter_ide:
                 genuine_ide.append(l)
             else:
                 artificial_ide.append(l)
@@ -41,7 +41,7 @@ class BookPatternIde(unittest.TestCase):
         x,y = plot_distribution(pair_subc_level_count,"./Book/graph/distribution_g_identities")
 
         # heavy nodes
-        heavy_nodes = compute_heavy_nodes(x,y,14,1)
+        heavy_nodes = compute_heavy_nodes(x,y,7,1)
         heavy_nodes_ratio = compute_heavy_nodes_ratio(heavy_nodes,pair_subc_level_count)
         # build epsilon  lattice for genuine ide      
         in_subc_connected = {}
@@ -94,7 +94,7 @@ class BookPatternIde(unittest.TestCase):
         genuine_ide = []
         artificial_ide = []
         for l in ide:
-            if l[2] >= filter_ide:
+            if l[2] > filter_ide:
                 genuine_ide.append(l)
             else:
                 artificial_ide.append(l)
@@ -112,13 +112,14 @@ class BookPatternIde(unittest.TestCase):
         x,y = plot_distribution(pair_subc_level_count,"./Book/graph/distribution_a_identities")
 
         # heavy nodes
-        heavy_nodes = compute_heavy_nodes(x,y,61,1)
+        heavy_nodes = compute_heavy_nodes(x,y,68,1)
         heavy_nodes_ratio = compute_heavy_nodes_ratio(heavy_nodes,pair_subc_level_count)
         # build epsilon  lattice for aritifcial ide      
         in_subc_connected = {}
         connect(1,subc_levels,in_subc_connected)
         connect(2,subc_levels,in_subc_connected)
         connect(3,subc_levels,in_subc_connected)
+        connect(4,subc_levels,in_subc_connected)
         
         subc_index = index_subc_id(subc_levels)
         ############################ 
